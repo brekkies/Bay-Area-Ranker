@@ -1,1 +1,2 @@
 # Bay-Area-Ranker
+The intent of this project is to allow fellow explorers of the SF Bay Area to find downtown areas worth visiting and to highlight ones worth returning to. This is the latest iteration of an ongoing personal effort to rank every downtown in the Bay by my own metrics. To make this more useful to others, I wanted to allow folks to choose which metrics mattered most to them. Their selection will determine their personalized ranking of each downtown.
