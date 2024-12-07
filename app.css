@@ -49,7 +49,7 @@ footer {
 
 
 .chart-container {
-    width: 70%; /* Adjust the width of the chart */
+    width: 50%; /* Adjust the width of the chart */
     height:fit-content;
     margin-left: auto;
     margin-right:1%;
@@ -65,3 +65,67 @@ canvas {
     width: 100% !important; /* Make the canvas width responsive */
     height: 100% !important; /* Make the canvas height responsive */
   }
+
+
+body {
+    
+    margin: 0;
+    height: 100vh;
+}
+  
+.weights-container {
+    width: 35%; /* Adjust width as needed */
+    max-height: 30vh; /* Ensure it fits within the viewport */
+    overflow-y: auto; /* Enable scrolling for overflow */
+    background-color: #f4f4f4; /* Light background color */
+    padding: 10px;
+  }
+  
+  .filter-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Space between rows */
+  }
+  
+  span {
+    margin-right: 10px; /* Space between label and buttons */
+    font-weight: bold;
+  }
+  
+  .filter-btn {
+    margin: 0 2px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .filter-btn.selected {
+    background-color: #007BFF;
+    color: white;
+  }
+
+  .filter-label {
+    flex: 0 0 80px; /* Set a fixed width for labels */
+    text-align: right; /* Align text to the right */
+    margin-right: 10px; /* Space between label and buttons */
+    font-size:11px;
+  }
+
+
+
+  .description-container {
+    left: 20px; /* Match the left alignment of the filter container */
+    top: 100%; /* Position it below the filter container */
+    width: 35%; /* Match the width of the filter container */
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+  }
+  
+  
