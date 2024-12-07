@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(csvData => {
       const parsedData = Papa.parse(csvData, { header: true }).data; // Parse CSV with headers
       const labels = parsedData.map(row => row.Downtown.trim());
-      const scores = parsedData.map(row => Number(row.Score));
+      const scores = parsedData.map(row => Number(row['Score Personal']));
 
       // Generate the chart
       const ctx = document.getElementById('downtownChart').getContext('2d');
