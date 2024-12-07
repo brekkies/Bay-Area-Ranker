@@ -25,8 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         options: {
           indexAxis: 'y',
-          responsive: true, // Ensure it resizes properly
+          responsive: false, // Ensure it resizes properly
           scales: {
+            
             x: {
               beginAtZero: true,
               ticks: {
