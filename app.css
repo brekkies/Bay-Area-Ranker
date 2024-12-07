@@ -10,6 +10,7 @@ header {
     color: white;
     padding: 1rem 0;
     text-align: center;
+    position: fixed
 }
 
 main {
@@ -51,16 +52,16 @@ footer {
 .chart-container {
     width: 50%; /* Adjust the width of the chart */
     margin-left: auto;
-    margin-right: 0;
+    margin-right: 5%;
     position: absolute;
-    right: 50px; /* Position the chart on the right side */
-    top: 100px; /* Adjust as needed for positioning */
+    right: 0; /* Position the chart on the right side */
+    top: 200px; /* Adjust as needed for positioning */
     max-height: 90vh; /* Optional: Limit the maximum height */
     overflow-y: scroll; /* Allow scrolling when the chart overflows */
 }
   
   
-  canvas {
+canvas {
     width: 100% !important; /* Make the canvas width responsive */
     height: 100% !important; /* Make the canvas height responsive */
   }
