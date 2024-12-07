@@ -1,65 +1,65 @@
-Downtown,Final Score w/ Personal Ratings,Final Score
-Mountain View,99,99
-"Solano Ave, Albany",85,87
-Palo Alto,82,78
-Menlo Park,79,75
-"Piedmont Ave, Oakland",77,73
-Mill Valley,74,63
-Campbell,72,61
-"Rockridge, Oakland",68,61
-"4th St, Berkeley",67,76
-"Cal Ave, Palo Alto",66,59
-"Elmwood, Berkeley",65,68
-"Temescal, Oakland",64,62
-Santa Rosa,63,71
-San Anselmo,63,60
-Sonoma,61,64
-Redwood City,61,63
-San Mateo,61,58
-Pleasanton,60,72
-"Grand Lake, Oakland",59,71
-Burlingame,59,60
-Sausalito,59,55
-Los Altos,58,65
-Los Gatos,58,54
-Napa,57,59
-Morgan Hill,55,72
-Half Moon Bay,55,51
-Livermore,54,66
-"Park St, Alameda",53,65
-Danville,52,62
-San Rafael,51,62
-Sebastopol,51,57
-Fairfax,49,59
-"Willow Glen, San Jose",49,49
-"Webster St, Alameda",48,58
-San Carlos,47,52
-Martinez,46,56
-Healdsburg,46,56
-"Southside, Berkeley",45,69
-Saratoga,45,60
-Sunnyvale,45,55
-Benicia,45,54
-St Helena,45,49
-Calistoga,44,53
-Cloverdale,41,49
-Concord,41,49
-Walnut Creek,39,63
-Larkspur,39,48
-"Montclaire, Oakland",39,47
-Gilroy,39,47
-Orinda,38,56
-Windsor,38,46
-Brentwood,36,43
-Brisbane,35,43
-Millbrae,35,42
-Petaluma,34,41
-Vallejo,33,40
-Suisun City,31,38
-Rio Vista,31,37
-Emeryville,27,53
-South San Francisco,25,35
-Pittsburg,23,54
-Hayward,21,52
-Novato,18,42
-San Bruno,18,38
+Downtown,Score Personal,Final Score
+"""Mountain View""",99,99
+"""Solano Ave, Albany""",85,87
+"""Palo Alto""",82,78
+"""Menlo Park""",79,75
+"""Piedmont Ave, Oakland""",77,73
+"""Mill Valley""",74,63
+"""Campbell""",72,61
+"""Rockridge, Oakland""",68,61
+"""4th St, Berkeley""",67,76
+"""Cal Ave, Palo Alto""",66,59
+"""Elmwood, Berkeley""",65,68
+"""Temescal, Oakland""",64,62
+"""Santa Rosa""",63,71
+"""San Anselmo""",63,60
+"""Sonoma""",61,64
+"""Redwood City""",61,63
+"""San Mateo""",61,58
+"""Pleasanton""",60,72
+"""Grand Lake, Oakland""",59,71
+"""Burlingame""",59,60
+"""Sausalito""",59,55
+"""Los Altos""",58,65
+"""Los Gatos""",58,54
+"""Napa""",57,59
+"""Morgan Hill""",55,72
+"""Half Moon Bay""",55,51
+"""Livermore""",54,66
+"""Park St, Alameda""",53,65
+"""Danville""",52,62
+"""San Rafael""",51,62
+"""Sebastopol""",51,57
+"""Fairfax""",49,59
+"""Willow Glen, San Jose""",49,49
+"""Webster St, Alameda""",48,58
+"""San Carlos""",47,52
+"""Martinez""",46,56
+"""Healdsburg""",46,56
+"""Southside, Berkeley""",45,69
+"""Saratoga""",45,60
+"""Sunnyvale""",45,55
+"""Benicia""",45,54
+"""St Helena""",45,49
+"""Calistoga""",44,53
+"""Cloverdale""",41,49
+"""Concord""",41,49
+"""Walnut Creek""",39,63
+"""Larkspur""",39,48
+"""Montclaire, Oakland""",39,47
+"""Gilroy""",39,47
+"""Orinda""",38,56
+"""Windsor""",38,46
+"""Brentwood""",36,43
+"""Brisbane""",35,43
+"""Millbrae""",35,42
+"""Petaluma""",34,41
+"""Vallejo""",33,40
+"""Suisun City""",31,38
+"""Rio Vista""",31,37
+"""Emeryville""",27,53
+"""South San Francisco""",25,35
+"""Pittsburg""",23,54
+"""Hayward""",21,52
+"""Novato""",18,42
+"""San Bruno""",18,38
