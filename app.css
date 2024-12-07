@@ -56,7 +56,7 @@ footer {
     right: 0; /* Position the chart on the right side */
     top: 100px; /* Adjust as needed for positioning */
     max-height: 90vh; /* Optional: Limit the maximum height */
-    overflow-y: auto; /* Allow scrolling when the chart overflows */
+    overflow-y: scroll; /* Allow scrolling when the chart overflows */
 }
   
   
