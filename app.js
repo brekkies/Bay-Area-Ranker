@@ -54,44 +54,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
-    
+
     // Fetch CSV data and generate the chart
     fetch('downtown-scores.csv')
     .then(response => response.text())
-    .then(data => {
-    const rows = data.split('\n').slice(1); // Skip header row
-    const labels = [];
-    const scores = [];
+    .then(csvData => {
+      const parsedData = Papa.parse(csvData, { header: true }).data; // Parse CSV with headers
+      const labels = parsedData.map(row => row.Downtown.trim());
+      const scores = parsedData.map(row => Number(row.Score));
 
-    rows.forEach(row => {
-        const [downtown, score] = row.split(',');
-        labels.push(downtown.trim());
-        scores.push(Number(score.trim()));
-    });
-
-    // Generate the chart
-    const ctx = document.getElementById('downtownChart').getContext('2d');
-    new Chart(ctx, {
+      // Generate the chart
+      const ctx = document.getElementById('downtownChart').getContext('2d');
+      new Chart(ctx, {
         type: 'bar',
         data: {
-        labels: labels,
-        datasets: [{
+          labels: labels,
+          datasets: [{
             label: 'Downtown Scores',
             data: scores,
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
-        }]
+          }]
         },
         options: {
-        indexAxis: 'y', // Horizontal bar chart
-        scales: {
+          indexAxis: 'y', // Horizontal bar chart
+          scales: {
             x: {
-            beginAtZero: true
+              beginAtZero: true
             }
+          }
         }
-        }
-    });
+      });
     })
     .catch(error => console.error('Error fetching data:', error));
 
