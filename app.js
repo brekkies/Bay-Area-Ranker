@@ -15,18 +15,41 @@ document.addEventListener('DOMContentLoaded', () => {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Score Personal',
+            label: 'Downtown Scores',
             data: scores,
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
+            borderWidth: 1,
+            barThickness: 30, // Increase the thickness of the bars
           }]
         },
         options: {
-          indexAxis: 'y', // Horizontal bar chart
+          indexAxis: 'y',
+          responsive: true, // Ensure it resizes properly
           scales: {
             x: {
-              beginAtZero: true
+              beginAtZero: true,
+              ticks: {
+                font: {
+                  size: 18, // Increase the font size for the x-axis labels
+                }
+              }
+            },
+            y: {
+              ticks: {
+                font: {
+                  size: 16, // Increase the font size for the y-axis labels
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                font: {
+                  size: 20 // Increase the font size for the legend label
+                }
+              }
             }
           }
         }

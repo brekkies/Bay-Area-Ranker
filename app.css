@@ -45,3 +45,19 @@ footer {
     padding: 1rem;
     background: #ddd;
 }
+
+.chart-container {
+    width: 50%; /* Adjust the size of the chart */
+    height: 400px; /* Optional: Adjust the height */
+    margin-left: auto;
+    margin-right: 0;
+    overflow-y: auto; /* Allow scrolling */
+    position: absolute;
+    right: 0; /* Place it on the right side */
+    top: 100px; /* Adjust for positioning */
+  }
+  
+  canvas {
+    width: 100% !important; /* Make the canvas width responsive */
+    height: 100% !important; /* Make the canvas height responsive */
+  }
