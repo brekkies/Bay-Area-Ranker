@@ -40,16 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      function applyFilters() {
-        const activeFilters = [];
-        
-        document.querySelectorAll('.filter-btn.selected').forEach(button => {
-          activeFilters.push(button.textContent.trim());
-        });
       
-        // Use `activeFilters` to update your chart data
-        console.log("Active filters:", activeFilters);
-      }
 
 
       const filterRows = document.querySelectorAll('.filter-row');
@@ -72,24 +63,39 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const weights = {
-        CafeScore: 20,
-        BookScore: 20,
-        ParkScore: 20,
-        BikeScore: 20,
-        TransitScore: 20,
-        TreeScore: 20,
-        Library: 20,
-        MovieTheater: 20,
+        CafeScore: 0,
+        BookScore: 0,
+        ParkScore: 0,
+        BikeScore: 0,
+        TransitScore: 0,
+        TreeScore: 0,
+        Library: 0,
+        MovieTheater: 0,
       };
 
       function calculateFinalScores(data) {
-        return data.map(row => {
-          const finalScore = Object.keys(row.scores).reduce((sum, component) => {
+        // Calculate the maximum possible score
+        const maxPossibleScore = Object.keys(weights).reduce((sum, component) => {
+          return sum + (weights[component] / 100) * 100; // Normalize each weight to a max of 100
+        }, 0);
+      
+        // Calculate normalized scores for each downtown
+        const scores = data.map(row => {
+          const rawScore = Object.keys(row.scores).reduce((sum, component) => {
             return sum + row.scores[component] * (weights[component] / 100);
           }, 0);
-          return { location: row.location, score: finalScore };
+      
+          // Normalize the raw score to a 0-100 scale
+          const normalizedScore = (rawScore / maxPossibleScore) * 100;
+      
+          return { location: row.location, score: normalizedScore };
         });
+      
+        // Sort scores in descending order
+        return scores.sort((a, b) => b.score - a.score);
       }
+      
+      
       
       let chart;
 
@@ -107,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
               label: 'Downtown Scores',
               data: scores,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              backgroundColor: 'rgba(75, 100, 192, 0.2)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
               barThickness: 20,
@@ -119,17 +125,33 @@ document.addEventListener('DOMContentLoaded', () => {
             scales: {
               x: { beginAtZero: true },
               y: {}
-            }
+            
+            },
+            onHover: (event, chartElement) => {
+              if (chartElement.length > 0) {
+                const index = chartElement[0].index; // Get the bar index
+                const downtown = chart.data.labels[index]; // Get the bar label (Downtown)
+                showDetails(downtown); // Call the function to show details
+              } else {
+                hideDetails(); // Hide details when not hovering
+              }
+            },
           }
         });
       }
 
       function updateChart(data) {
         const finalScores = calculateFinalScores(data);
-        chart.data.labels = finalScores.map(item => item.location);
-        chart.data.datasets[0].data = finalScores.map(item => item.score);
+        const labels = finalScores.map(item => item.location);
+        const scores = finalScores.map(item => item.score);
+        const colors = generateColors(scores);
+      
+        chart.data.labels = labels;
+        chart.data.datasets[0].data = scores;
+        chart.data.datasets[0].backgroundColor = colors;
         chart.update();
       }
+      
 
       function setupWeightControls(data) {
         document.querySelectorAll('input[type="range"]').forEach(slider => {
@@ -141,6 +163,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }      
 
+      function generateColors(scores) {
+        const maxScore = Math.max(...scores);
+        const minScore = Math.min(...scores);
+      
+        return scores.map(score => {
+          // Map score to a 0-1 range
+          const normalized = 1.2 - (score - minScore) / (maxScore - minScore);
+          // Generate a color (e.g., blue hue with varying saturation)
+          return `hsl(150, 100%, ${normalized * 100}%)`;
+        });
+      }
+
+      function showDetails(downtownName) {
+        console.log(downtownName.trim())
+        const details = detailsData.find(row => row['Downtown Name'].trim() === downtownName.trim());
+      
+        if (details) {
+          document.getElementById('details-title').textContent = `Details for ${downtownName}`;
+          document.getElementById('details-info').innerHTML = `
+            <strong>Population:</strong> ${details.Population}<br>
+            <strong>Median Income:</strong> $${details['Median Income']}<br>
+            <strong>Points of Interest:</strong> ${details['Points of Interest']}
+          `;
+          document.getElementById('details-container').style.display = 'block';
+        }
+      }
+      
+      function hideDetails() {
+        document.getElementById('details-container').style.display = 'none';
+      }
+      
       
     })
     .catch(error => console.error('Error fetching data:', error));

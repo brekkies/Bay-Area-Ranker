@@ -20,22 +20,20 @@
         </div>
 
         <div class="weights-container">
-            <label>Cafes: <input type="range" id="weight-CafeScore" min="0" max="100" value="20"></label>
-            <label>Books: <input type="range" id="weight-BookScore" min="0" max="100" value="20"></label>
-            <label>Parks: <input type="range" id="weight-ParkScore" min="0" max="100" value="20"></label>
-            <label>Bikes: <input type="range" id="weight-BikeScore" min="0" max="100" value="20"></label>
-            <label>Transit: <input type="range" id="weight-TransitScore" min="0" max="100" value="20"></label>
-            <label>Trees: <input type="range" id="weight-TreeScore" min="0" max="100" value="20"></label>
-            <label>Library: <input type="range" id="weight-Library" min="0" max="100" value="20"></label>
-            <label>Movie Theater: <input type="range" id="weight-MovieTheater" min="0" max="100" value="20"></label>
-          </div>    
-    
+            <label>Cafes: <input type="range" id="weight-CafeScore" min="0" max="100" value="0"></label>
+            <label>Books: <input type="range" id="weight-BookScore" min="0" max="100" value="0"></label>
+            <label>Parks: <input type="range" id="weight-ParkScore" min="0" max="100" value="0"></label>
+            <label>Bikes: <input type="range" id="weight-BikeScore" min="0" max="100" value="0"></label>
+            <label>Transit: <input type="range" id="weight-TransitScore" min="0" max="100" value="0"></label>
+            <label>Trees: <input type="range" id="weight-TreeScore" min="0" max="100" value="0"></label>
+            <label>Library: <input type="range" id="weight-Library" min="0" max="100" value="0"></label>
+            <label>Movie Theater: <input type="range" id="weight-MovieTheater" min="0" max="100" value="0"></label>
+        </div>
         
-        <!-- Description Container -->
-        <div class="description-container" id="description-container">
-        <h3 id="description-title">Hover over a filter</h3>
-        <p id="description-text">Details about the filter will appear here.</p>
-  </div>
+        <div id="details-container" style="display: none; position: absolute; top: 500px; left: 20px; width: 300px; border: 1px solid #ccc; padding: 10px; background: #f9f9f9;">
+            <h3 id="details-title"></h3>
+            <p id="details-info"></p>
+        </div>
     </main>
     
     <footer>

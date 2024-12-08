@@ -3,6 +3,11 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    position: relative;
+    min-width: 500px;
+    /*overflow: hidden;  Overflow set to hidden. Any elements outside of the window will not be shown */
+    height: 100%; /* Height set to 100% means the body will extend from the top of the window to the bottom */
+    max-height: 100%; /* Maximum height is limited to 100% */
 }
 
 header {
@@ -49,14 +54,17 @@ footer {
 
 
 .chart-container {
-    width: 50%; /* Adjust the width of the chart */
+    width: fit-content; /* Adjust the width of the chart */
     height:fit-content;
     margin-left: auto;
     margin-right:1%;
     position: absolute;
-    right: 0; /* Position the chart on the right side */
+    min-width: 30vh;
+    left: 250px;
+    right: 0px; /* Position the chart on the right side */
     top: 150px; /* Adjust as needed for positioning */
-    max-height: 60vh; /* Optional: Limit the maximum height */
+    max-height: 63vh; /* Optional: Limit the maximum height */
+    max-width:100vh;
     overflow-y: scroll; /* Allow scrolling when the chart overflows */
 }
   
@@ -74,58 +82,28 @@ body {
 }
   
 .weights-container {
-    width: 35%; /* Adjust width as needed */
-    max-height: 30vh; /* Ensure it fits within the viewport */
+    width: 170px; /* Adjust width as needed */
+    max-width: 30vh;
+    max-height: 60vh; /* Ensure it fits within the viewport */
     overflow-y: auto; /* Enable scrolling for overflow */
     background-color: #f4f4f4; /* Light background color */
     padding: 10px;
   }
   
-  .filter-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Space between rows */
-  }
   
   span {
     margin-right: 10px; /* Space between label and buttons */
     font-weight: bold;
   }
   
-  .filter-btn {
-    margin: 0 2px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
+  #details-container {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 1000;
   }
   
-  .filter-btn.selected {
-    background-color: #007BFF;
-    color: white;
-  }
 
-  .filter-label {
-    flex: 0 0 80px; /* Set a fixed width for labels */
-    text-align: right; /* Align text to the right */
-    margin-right: 10px; /* Space between label and buttons */
-    font-size:11px;
-  }
-
-
-
-  .description-container {
-    left: 20px; /* Match the left alignment of the filter container */
-    top: 100%; /* Position it below the filter container */
-    width: 35%; /* Match the width of the filter container */
-    margin-top: 10px;
-    padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-  }
   
   
