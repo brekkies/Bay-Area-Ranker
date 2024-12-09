@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
           options: {
             indexAxis: 'y',
             responsive: false,
+            maintainAspectRatio: false,
+            tooltips: {
+              enabled: false
+            },
             scales: {
               x: { beginAtZero: true },
               y: {}
@@ -91,8 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
               if (chartElement.length > 0) {
                 const index = chartElement[0].index; // Get the hovered bar's index
                 const downtownData = sortedRawData[index]; // Use the sorted finalScores array
-                console.log("Hovered index:", index); // Log the index
-                console.log("Hovered data:", sortedRawData[index]); // Log the corresponding data
                 showDetails(downtownData);
               } else {
                 hideDetails(); // Hide details when not hovering
