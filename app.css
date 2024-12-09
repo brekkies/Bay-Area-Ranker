@@ -4,7 +4,7 @@ body {
     padding: 0;
     line-height: 1.6;
     position: relative;
-    min-width: 500px;
+    min-width: 680px;
     /*overflow: hidden;  Overflow set to hidden. Any elements outside of the window will not be shown */
     height: 100%; /* Height set to 100% means the body will extend from the top of the window to the bottom */
     max-height: 100%; /* Maximum height is limited to 100% */
@@ -54,10 +54,10 @@ footer {
 
 
 .chart-container {
-    width: fit-content; /* Adjust the width of the chart */
+    width: 420px; /* Adjust the width of the chart */
     height:fit-content;
     margin-left: auto;
-    margin-right:1%;
+    margin-right:3%;
     position: absolute;
     min-width: 30vh;
     left: 250px;
@@ -74,12 +74,6 @@ canvas {
     height: 100% !important; /* Make the canvas height responsive */
   }
 
-
-body {
-    
-    margin: 0;
-    height: 100vh;
-}
   
 .weights-container {
     width: 170px; /* Adjust width as needed */
@@ -98,7 +92,7 @@ body {
   
   #details-container {
     position: absolute;
-    left: 50px; /* Adjust as needed */
+    left: 20%; /* Adjust as needed */
     top: 200px; /* Adjust as needed */
     width: 300px;
     padding: 10px;

@@ -83,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
             indexAxis: 'y',
             responsive: false,
             maintainAspectRatio: false,
-            tooltips: {
-              enabled: false
+            plugins: {
+              tooltip: {
+                enabled: false
+              }
             },
             scales: {
               x: { beginAtZero: true },
