@@ -23,44 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         initializeChart(rawData);
         setupWeightControls(rawData);
-      });
-
-
-      // Select all filter buttons
-      const filterButtons = document.querySelectorAll('.filter-btn');
-
-      // Add event listeners to toggle selected state
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          // Toggle selected class
-          button.classList.toggle('selected');
-          
-          // Implement your filtering logic here
-          console.log(`Filter toggled: ${button.textContent}`);
-        });
-      });
-
-      
-
-
-      const filterRows = document.querySelectorAll('.filter-row');
-      const descriptionTitle = document.getElementById('description-title');
-      const descriptionText = document.getElementById('description-text');
-
-      // Function to update the description
-      function updateDescription(title, description) {
-        descriptionTitle.textContent = title;
-        descriptionText.textContent = description;
-      }
-
-      // Add hover listeners to update the description
-      filterRows.forEach(row => {
-        row.addEventListener('mouseover', () => {
-          const title = row.getAttribute('data-title');
-          const description = row.getAttribute('data-description');
-          updateDescription(title, description);
-        });
-      });
+      })
 
       const weights = {
         CafeScore: 0,
@@ -74,25 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       function calculateFinalScores(data) {
-        // Calculate the maximum possible score
         const maxPossibleScore = Object.keys(weights).reduce((sum, component) => {
-          return sum + (weights[component] / 100) * 100; // Normalize each weight to a max of 100
+          return sum + (weights[component] / 100) * 100;
         }, 0);
       
-        // Calculate normalized scores for each downtown
+        // Recalculate final scores based on current weights
         const scores = data.map(row => {
           const rawScore = Object.keys(row.scores).reduce((sum, component) => {
             return sum + row.scores[component] * (weights[component] / 100);
           }, 0);
       
-          // Normalize the raw score to a 0-100 scale
           const normalizedScore = (rawScore / maxPossibleScore) * 100;
-      
-          return { location: row.location, score: normalizedScore };
+          return { location: row.location, score: normalizedScore, scores: row.scores };
         });
       
-        // Sort scores in descending order
-        return scores.sort((a, b) => b.score - a.score);
+        return scores.sort((a, b) => b.score - a.score); // Sort scores from highest to lowest
       }
       
       
@@ -105,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const finalScores = calculateFinalScores(data);
         const labels = finalScores.map(item => item.location);
         const scores = finalScores.map(item => item.score);
+        sortedRawData = sortedRawData = data.sort((a, b) => b.score - a.score); // Initially calculate and sort
 
         chart = new Chart(ctx, {
           type: 'bar',
@@ -129,9 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             onHover: (event, chartElement) => {
               if (chartElement.length > 0) {
-                const index = chartElement[0].index; // Get the bar index
-                const downtown = chart.data.labels[index]; // Get the bar label (Downtown)
-                showDetails(downtown); // Call the function to show details
+                const index = chartElement[0].index; // Get the hovered bar's index
+                const downtownData = sortedRawData[index]; // Use the sorted finalScores array
+                console.log("Hovered index:", index); // Log the index
+                console.log("Hovered data:", sortedRawData[index]); // Log the corresponding data
+                showDetails(downtownData);
               } else {
                 hideDetails(); // Hide details when not hovering
               }
@@ -141,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       function updateChart(data) {
-        const finalScores = calculateFinalScores(data);
+        finalScores = calculateFinalScores(data); // Recalculate and re-sort based on weights
+        sortedRawData = finalScores.sort((a, b) => b.score - a.score);
         const labels = finalScores.map(item => item.location);
         const scores = finalScores.map(item => item.score);
         const colors = generateColors(scores);
@@ -175,23 +138,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      function showDetails(downtownName) {
-        console.log(downtownName.trim())
-        const details = detailsData.find(row => row['Downtown Name'].trim() === downtownName.trim());
-      
-        if (details) {
-          document.getElementById('details-title').textContent = `Details for ${downtownName}`;
-          document.getElementById('details-info').innerHTML = `
-            <strong>Population:</strong> ${details.Population}<br>
-            <strong>Median Income:</strong> $${details['Median Income']}<br>
-            <strong>Points of Interest:</strong> ${details['Points of Interest']}
-          `;
-          document.getElementById('details-container').style.display = 'block';
-        }
+      function showDetails(downtownData) {
+        const detailsContainer = document.getElementById('details-container');
+        detailsContainer.innerHTML = `
+          <h3>Details for ${downtownData.location}</h3>
+          <p><strong>Cafe Score:</strong> ${downtownData.scores.CafeScore}</p>
+          <p><strong>Book Score:</strong> ${downtownData.scores.BookScore}</p>
+          <p><strong>Park Score:</strong> ${downtownData.scores.ParkScore}</p>
+          <p><strong>Bike Score:</strong> ${downtownData.scores.BikeScore}</p>
+          <p><strong>Transit Score:</strong> ${downtownData.scores.TransitScore}</p>
+          <p><strong>Tree Score:</strong> ${downtownData.scores.TreeScore}</p>
+          <p><strong>Library:</strong> ${downtownData.scores.Library}</p>
+          <p><strong>Movie Theater:</strong> ${downtownData.scores.MovieTheater}</p>
+        `;
+        detailsContainer.style.display = 'block';
       }
       
       function hideDetails() {
-        document.getElementById('details-container').style.display = 'none';
+        const detailsContainer = document.getElementById('details-container');
+        detailsContainer.style.display = 'none';
       }
       
       

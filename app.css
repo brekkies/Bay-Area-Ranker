@@ -97,12 +97,26 @@ body {
   }
   
   #details-container {
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    z-index: 1000;
+    position: absolute;
+    left: 50px; /* Adjust as needed */
+    top: 200px; /* Adjust as needed */
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    display: none; /* Hidden by default */
   }
+  
+  #details-title {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  #details-info {
+    font-size: 14px;
+  }
+  
   
 
   
