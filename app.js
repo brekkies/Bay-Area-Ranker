@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupWeightControls(rawData);
       })
 
+    
       const weights = {
         CafeScore: 0,
         BookScore: 0,
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const finalScores = calculateFinalScores(data);
         const labels = finalScores.map(item => item.location);
         const scores = finalScores.map(item => item.score);
-        sortedRawData = sortedRawData = data.sort((a, b) => b.score - a.score); // Initially calculate and sort
+        sortedRawData = data.sort((a, b) => b.score - a.score); // Initially calculate and sort
 
         chart = new Chart(ctx, {
           type: 'bar',
@@ -142,10 +143,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+
+      const downtownImages = {
+        "Menlo Park": "images/burlingame.jpg",
+        "Mill Valley": "images/burlingame.jpg",
+        "Montclaire, Oakland": "images/burlingame.jpg",
+        "Rockridge, Oakland": "images/burlingame.jpg",
+        "Pittsburg": "images/burlingame.jpg",
+        "Pleasanton": "images/burlingame.jpg",
+        "Redwood City": "images/burlingame.jpg",
+        "Rio Vista": "images/burlingame.jpg",
+        "San Carlos": "images/burlingame.jpg",
+        "Sonoma": "images/burlingame.jpg",
+        "South San Francisco": "images/burlingame.jpg",
+        "11": "images/burlingame.jpg",
+        "12": "images/burlingame.jpg",
+        "13": "images/burlingame.jpg",
+        "14": "images/burlingame.jpg",
+        "15": "images/burlingame.jpg",
+        "16": "images/burlingame.jpg",
+        "17": "images/burlingame.jpg",
+        "18": "images/burlingame.jpg",
+        "19": "images/burlingame.jpg",
+        "20": "images/burlingame.jpg",
+        "21": "images/burlingame.jpg",
+        "22": "images/burlingame.jpg",
+        "23": "images/burlingame.jpg",
+        "24": "images/burlingame.jpg",
+        "25": "images/burlingame.jpg",
+        "26": "images/burlingame.jpg",
+        "27": "images/burlingame.jpg"
+        // Add more as needed
+      };
       function showDetails(downtownData) {
         const detailsContainer = document.getElementById('details-container');
         detailsContainer.innerHTML = `
           <h3>Details for ${downtownData.location}</h3>
+          <img class="details-image" src="${Math.round(downtownImages[downtownData.location])}" alt="" style="width: 100%; height: 70%; margin-top: 10px;">
+          <p><strong>Total Score:</strong> ${downtownData.score}</p>
           <p><strong>Cafe Score:</strong> ${downtownData.scores.CafeScore}</p>
           <p><strong>Book Score:</strong> ${downtownData.scores.BookScore}</p>
           <p><strong>Park Score:</strong> ${downtownData.scores.ParkScore}</p>

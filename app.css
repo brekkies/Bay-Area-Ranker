@@ -77,6 +77,9 @@ canvas {
   
 .weights-container {
     width: 170px; /* Adjust width as needed */
+    position:fixed;
+    font-size:small;
+    left:2%;
     max-width: 30vh;
     max-height: 60vh; /* Ensure it fits within the viewport */
     overflow-y: auto; /* Enable scrolling for overflow */
@@ -91,14 +94,15 @@ canvas {
   }
   
   #details-container {
-    position: absolute;
-    left: 20%; /* Adjust as needed */
-    top: 200px; /* Adjust as needed */
-    width: 300px;
+    position: fixed;
+    top: 150px; /* Adjust as needed */
+    left: 2%; /* Center horizontally */
+    z-index: 10; /* Ensure it appears above other elements */
+    width: 40%;
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
   }
   
   #details-title {
