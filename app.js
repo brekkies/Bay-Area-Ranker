@@ -179,8 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const detailsContainer = document.getElementById('details-container');
         detailsContainer.innerHTML = `
           <h3>Details for ${downtownData.location}</h3>
-          <img class="details-image" src="${Math.round(downtownImages[downtownData.location])}" alt="" style="width: 100%; height: 70%; margin-top: 10px;">
-          <p><strong>Total Score:</strong> ${downtownData.score}</p>
+          <img class="details-image" src="${downtownImages[downtownData.location]}" alt="" style="width: 100%; height: 70%; margin-top: 10px;">
+          <p><strong>Total Score:</strong> ${Math.round(downtownData.score)}</p>
           <p><strong>Cafe Score:</strong> ${downtownData.scores.CafeScore}</p>
           <p><strong>Book Score:</strong> ${downtownData.scores.BookScore}</p>
           <p><strong>Park Score:</strong> ${downtownData.scores.ParkScore}</p>
